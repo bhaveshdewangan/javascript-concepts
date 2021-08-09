@@ -44,15 +44,64 @@ function levelThree() {
 levelThree();
 
 /*
+ C L O S U R E S  U S E S
+*/
+
+/*
+    ** Emulating private methods with closures **
+    Language such as JAVA allow you to create a private method inside the class that can only
+    be accessible by that class member inside the class.
+
+    Javascript doesn't provide the native way to do this but it is possible to emulate private 
+    methods using closures.
+    Private methods aren't just useful for restricting the code access but also provide a 
+    great way to managing your global namespace. By doing this it fulfill the property 
+    of Encapsulation and Data Hiding.
+
+    there is a single lexical environment that is shared by the three functions: \
+    counter.increment, counter.decrement, and counter.value.
+*/
+
+var counter = (function () {
+    var privateCounter = 0;
+    function changeBy(val) {
+        privateCounter += val;
+    }
+
+    return {
+        increment: function () {
+            changeBy(1);
+        },
+
+        decrement: function () {
+            changeBy(-1);
+        },
+
+        value: function () {
+            return privateCounter;
+        }
+    };
+})();
+
+console.log(counter.value());  // 0.
+
+counter.increment();
+counter.increment();
+console.log(counter.value());  // 2.
+
+counter.decrement();
+console.log(counter.value());  // 1.
+
+/*
     E   X  E  R  C  I  S  E
     most frquently asked question in inteview
     Problem statemen: Print the number 1,2,3,4 after each second
 */
 function solutionFirst() {
-    for(let i=1; i<=4; i++) {
+    for (let i = 1; i <= 4; i++) {
         setTimeout(() => {
             console.log(i);
-        }, 1000*i)
+        }, 1000 * i)
     }
 }
 solutionFirst();
@@ -65,11 +114,11 @@ solutionFirst();
 */
 
 function solutionSecond() {
-    for(var i=1; i<=4; i++) {
+    for (var i = 1; i <= 4; i++) {
         function closure(i) {
             setTimeout(() => {
                 console.log(i);
-            }, 1000*i)
+            }, 1000 * i)
         }
         closure(i)
     }

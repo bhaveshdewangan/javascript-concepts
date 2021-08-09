@@ -2,7 +2,9 @@
 This small project contains a simple HTML and Javascript file.
 
 ### What is Closures
-Function along with the lexical scope bundle togetther called closures.
+* Function along with the lexical scope bundle togetther called closures.
+
+* A closure is the combination of a function and the lexical environment within which that function was declared. This environment consists of any local variables that were in-scope at the time the closure was created.
 
 ### Pros
 
