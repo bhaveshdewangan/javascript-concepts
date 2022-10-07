@@ -1,0 +1,80 @@
+
+ul#summer-drinks li {
+    color: red !important;
+    font-weight: 100;
+}
+
+li#nonFavorite {
+    color: purple !important;
+    font-weight: 100 !important;
+} 
+
+li.favorite {
+    color: blue !important;
+    font-weight: 900 !important;
+
+    /* color: blue;
+    font-weight: 900; */
+} 
+
+li#favorite {
+    color: green !important;
+    font-weight: 900 !important;
+} 
+
+/* li.favorite {
+    color: green !important;
+    font-weight: 900 !important;
+}  */
+
+
+
+
+div.favorite {
+    color: blue !important;
+    font-weight: 900 !important;
+
+    /* color: blue;
+    font-weight: 900; */
+} 
+
+div.favorite {
+    color: purple !important;
+    font-weight: 900 !important;
+} 
+
+div#nonFavorite {
+    color: green !important;
+    font-weight: 900 !important;
+
+    /* color: blue;
+    font-weight: 900; */
+} 
+
+div#summer-drinks div {
+    color: red;
+    font-weight: 100;
+}
+
+
+
+
+/* div.outer p {
+    color: orange;
+  }
+  
+  div:not(.outer) p{
+    color: blueviolet;
+  } */
+
+  div:where(.outer) p {
+    color: orange;
+  }
+  
+  div p {
+    color: blueviolet;
+  }
+
+
+
+

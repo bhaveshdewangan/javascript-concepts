@@ -1,23 +1,44 @@
 <!DOCTYPE html>
 
 <html>
-    <head lang="en-US">
-        <meta charset="UTF-8">
-        <meta name="Auther" content="Bhavesh">
-        <meta name="description" content="this is the page covering throttling">
 
-        <script src="index.js" defer></script>
-        <script>
-            console.log('Initializing page')
-        </script>
+<head lang="en-US">
+    <meta charset="UTF-8">
+    <meta name="Auther" content="Bhavesh">
+    <meta name="description" content="this is the page covering throttling">
 
-        <link rel="shortcut icon" href="image/tank.png">
-        <title>Throttling</title>
-    </head>
+    <script src="index.js" defer></script>
+    <script>
+        console.log('Initializing page')
+    </script>
 
-    <body>
-        <p>Japanese example: ご飯が熱い。</p>
-        <button type="button" style="height: 30px; width: 80px; "onclick="methodToBeUsed()"> Click me </button>
-    </body>
+    <link rel="shortcut icon" href="image/tank.png">
+    <title>Throttling</title>
+</head>
+
+<body>
+    <p>Japanese example: ご飯が熱い。</p>
+    <button type="button" style="height: 30px; width: 80px; " onclick="methodToBeUsed()"> Click me </button>
+    <div class="container">
+        <div class="progress-bar" data-barWidth="10">
+        </div>
+    </div>
+    <style>
+        .container {
+            margin-top: 10px;
+            height: 20px;
+            width: auto;
+            border: 1px solid black;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            position: absolute;
+            width: 10%;
+            background-color: cadetblue;
+        }
+    </style>
+</body>
 
 </html>
