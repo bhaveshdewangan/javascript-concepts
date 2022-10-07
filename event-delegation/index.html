@@ -1,34 +1,54 @@
 <!DOCTYPE>
 
 <html>
-    <head lang="en-US">
-        <meta charset="UTF-8">
-        <meta name="Auther" content="Bhavesh">
-        <meta name="description" content="this is the page covering how to handle the event i.e event delegateion">
 
-        <script src="index.js" defer></script>
-        <script>
-            console.log('Initializing page')
-        </script>
+<head lang="en-US">
+    <meta charset="UTF-8">
+    <meta name="Auther" content="Bhavesh">
+    <meta name="description" content="this is the page covering how to handle the event i.e event delegateion">
 
-        <link rel="shortcut icon" href="image/tank.png">
-        <title>Event Delegation</title>
-    </head>
+    <script src="index.js" defer></script>
+    <script>
+        console.log('Initializing page')
+    </script>
 
-    <body>
-        <p>Japanese example: ご飯が熱い。</p>
-        <table id="bauga-table">
-            <caption><em>Bagua</em> Chart:</caption>
-            <thead id="table_head">
-                <tr>
-                    <th style="width: 100px; height: 40px; border-radius: 1px solid black; background-color: #D3D3D3;">Direction</th>
-                    <th style="width: 100px; height: 40px; border-radius: 1px solid black; background-color: #D3D3D3;">Element</th>
-                    <th style="width: 100px; height: 40px; border-radius: 1px solid black; background-color: #D3D3D3;">Color</th>
-                    <th style="width: 100px; height: 40px; border-radius: 1px solid black; background-color: #D3D3D3;">Meaning</th>
-                </tr>
-            </thead>
-            <tbody id="table_body">
-            </tbody>
-        </table>
-    </body>
+    <link rel="shortcut icon" href="image/tank.png">
+    <title>Event Delegation</title>
+</head>
+
+<body>
+    <p>Japanese example: ご飯が熱い。</p>
+    <table id="bauga-table">
+        <caption><em>Bagua</em> Chart:</caption>
+        <thead id="table_head">
+            <tr>
+                <th style="width: 100px; height: 40px; border-radius: 1px solid black; background-color: #D3D3D3;">
+                    Direction</th>
+                <th style="width: 100px; height: 40px; border-radius: 1px solid black; background-color: #D3D3D3;">
+                    Element</th>
+                <th style="width: 100px; height: 40px; border-radius: 1px solid black; background-color: #D3D3D3;">Color
+                </th>
+                <th style="width: 100px; height: 40px; border-radius: 1px solid black; background-color: #D3D3D3;">
+                    Meaning</th>
+            </tr>
+        </thead>
+        <tbody id="table_body">
+        </tbody>
+    </table>
+
+    <div id="grandParent">
+        <div id="parent">
+            <div id="child"></div>
+        </div>
+    </div>
+    <style>
+        div {
+            min-width: 100px;
+            min-height: 100px;
+            padding: 30px;
+            border: 1px solid black;
+        }
+    </style>
+</body>
+
 </html>

@@ -1,10 +1,10 @@
 /* simple example */
 function closures() {
-    const num = 26;
-    inner();
-    function inner() {
-        console.log("NUMBER", num);
-    }
+  const num = 26;
+  inner();
+  function inner() {
+    console.log("NUMBER", num);
+  }
 }
 closures();
 
@@ -14,12 +14,12 @@ closures();
     function remembers his lexical scope, and that's call a closures.
 */
 function remember() {
-    var rememberMe = "Ofcourse! i remember you :)";
-    function closure() {
-        console.log("Do you remember me, ", rememberMe);
-    }
-    rememberMe = "i won't forget you only"
-    return closure;
+  var rememberMe = "Ofcourse! i remember you :)";
+  function closure() {
+    console.log("Do you remember me, ", rememberMe);
+  }
+  rememberMe = "i won't forget you only";
+  return closure;
 }
 const fn = remember();
 fn();
@@ -30,16 +30,24 @@ fn();
     PS: inner most function forms a closures with his all parent/outer most functions
 */
 function levelThree() {
-    var parkingForStaff = true;
-    function levelTwo() {
-        var parkingForCustomer = true;
-        parkingForStaff = false;
-        function levelOne() {
-            console.log("Staff Parking: ", parkingForStaff, "\n", "Customer Parking: ", parkingForCustomer)
-        }
-        levelOne();
+  const parkingForStaff = true;
+  function levelTwo() {
+    var parkingForCustomer = true;
+    // parkingForStaff = false;
+    function levelOne() {
+      var parkingForStaff = null;
+
+      console.log(
+        "Staff Parking: ",
+        parkingForStaff,
+        "\n",
+        "Customer Parking: ",
+        parkingForCustomer
+      );
     }
-    levelTwo();
+    levelOne();
+  }
+  levelTwo();
 }
 levelThree();
 
@@ -63,34 +71,34 @@ levelThree();
 */
 
 var counter = (function () {
-    var privateCounter = 0;
-    function changeBy(val) {
-        privateCounter += val;
-    }
+  var privateCounter = 0;
+  function changeBy(val) {
+    privateCounter += val;
+  }
 
-    return {
-        increment: function () {
-            changeBy(1);
-        },
+  return {
+    increment: function () {
+      changeBy(1);
+    },
 
-        decrement: function () {
-            changeBy(-1);
-        },
+    decrement: function () {
+      changeBy(-1);
+    },
 
-        value: function () {
-            return privateCounter;
-        }
-    };
+    value: function () {
+      return privateCounter;
+    },
+  };
 })();
 
-console.log(counter.value());  // 0.
+console.log(counter.value()); // 0.
 
 counter.increment();
 counter.increment();
-console.log(counter.value());  // 2.
+console.log(counter.value()); // 2.
 
 counter.decrement();
-console.log(counter.value());  // 1.
+console.log(counter.value()); // 1.
 
 /*
     E   X  E  R  C  I  S  E
@@ -98,11 +106,11 @@ console.log(counter.value());  // 1.
     Problem statemen: Print the number 1,2,3,4 after each second
 */
 function solutionFirst() {
-    for (let i = 1; i <= 4; i++) {
-        setTimeout(() => {
-            console.log(i);
-        }, 1000 * i)
-    }
+  for (let i = 1; i <= 4; i++) {
+    setTimeout(() => {
+      console.log(i);
+    }, 1000 * i);
+  }
 }
 solutionFirst();
 /*
@@ -114,20 +122,19 @@ solutionFirst();
 */
 
 function solutionSecond() {
-    for (var i = 1; i <= 4; i++) {
-        function closure(i) {
-            setTimeout(() => {
-                console.log(i);
-            }, 1000 * i)
-        }
-        closure(i)
+  for (var i = 1; i <= 4; i++) {
+    function closure(i) {
+      setTimeout(() => {
+        console.log(i);
+      }, 1000 * i);
     }
+    closure(i);
+  }
 }
-solutionSecond();
+// solutionSecond();
 /*
     REASON:
     solutionSecond will be able to give a desired solution even after using a "var" instead of "let"
     because everytime loop run we provide a new value to the function "closure" and the statment
     inside the function remember the vlue provided from outside
 */
-
