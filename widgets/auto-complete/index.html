@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+
+<head lang="en-US">
+    <meta charset="UTF-8">
+    <meta name="Auther" content="Bhavesh">
+    <meta name="Description" content="Auto Complete Project">
+
+    <link rel="shortcut icon" href="./tank.png">
+    <title>Auto Complete</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="search-container">
+            <img class="icon" src="./search-icon.png" alt="">
+            <input class="text-area" placeholder="type here" type="text" id="search" onkeyup="serachText(value)">
+            <span class="cross" onclick="toggleSuggetionBoard([]);clearInputBox()">X</span>
+        </div>
+        <div class="separater" id="bottom-border"></div>
+        <div class="search-result" id="board">
+        </div>
+    </div>
+
+    <script>
+        const wordMasterList = ["a", "aa", "ab", "ac", "aab", "aac", "aacd", "a", "aa", "ab", "ac", "aab", "aac", "aacd", "a", "aa", "ab", "ac", "aab", "aac", "aacd"];
+        const resultBoardEle = document.getElementById("board");
+        const bottomLineWEle = document.getElementById("bottom-border");
+        const inputBoxEle = document.getElementById("search");
+
+        toggleSuggetionBoard([])
+        function serachText(keyword) {
+            let length = keyword.length;
+            let filteredWordList = length != 0 ? wordMasterList?.filter(word => word.substring(0, length) === keyword) : []
+            displaySuggestion(filteredWordList)
+        }
+
+        function displaySuggestion(wordList) {
+            resultBoardEle.innerHTML = ""
+            let ulEle = document.createElement("ul");
+            resultBoardEle.appendChild(ulEle)
+            toggleSuggetionBoard(wordList)
+            wordList.forEach(item => {
+                ulEle.appendChild(createListElement(item))
+            });
+        }
+
+        function getDisplayProperty(list) {
+            return list.length === 0 ? "none" : "block"
+        }
+
+        function createListElement(item) {
+            let ele = document.createElement("li");
+            ele.innerHTML = item;
+            ele.style['list-style-type'] = 'none'
+            return ele;
+        }
+
+        function toggleSuggetionBoard(data) {
+            const displayProp = getDisplayProperty(data);
+            resultBoardEle.style.display = displayProp;
+            bottomLineWEle.style.display = displayProp;
+        }
+
+        function clearInputBox() {
+            inputBoxEle.value = ""
+        }
+    </script>
+
+</body>
+
+</html>
+
+<style>
+    .container {
+        width: 250px;
+        min-height: 20px;
+        border: 1px solid black;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        padding: 2px 0;
+    }
+
+    .search-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    input {
+        border-style: none;
+        width: 80%;
+        margin: 0 10px 0;
+    }
+
+    .text-area:focus {
+        outline: none;
+    }
+
+    .search-result {
+        /* background-color: beige; */
+        height: 300px;
+        border-radius: 10px;
+        overflow: auto;
+    }
+
+    .separater {
+        height: 1px;
+        background-color: grey;
+        opacity: 0.5;
+        margin: 0 10px 0;
+    }
+
+    .icon {
+        padding: 8px;
+    }
+
+    .cross {
+        padding: 8px;
+    }
+</style>
